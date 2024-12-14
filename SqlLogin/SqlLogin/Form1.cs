@@ -35,8 +35,9 @@ namespace SqlLogin
             conn = new SqlConnection("Data Source=MIFFY-LAPTOP; Initial Catalog=AdventureWorks2022; Integrated Security=false; user id=sqluser; password=123456");
             conn.Open();
 
-            // 更新 BusinessEntityID=1 的人的密碼 hash
-            command = new SqlCommand("SELECT P.BusinessEntityID, P.FirstName, P.LastName, P.MiddleName, P.Suffix, PW.PasswordHash, PW.PasswordSalt FROM Person.Person P INNER JOIN Person.Password PW ON P.BusinessEntityID=PW.BusinessEntityID WHERE P.FirstName=@FirstName --AND P.LastName=@LastName", conn);
+            // 1. 合併 Person.Person 和 Person.Password
+            // 2. 找 @FirstName 和 @LastName 符合輸入結果的值
+            command = new SqlCommand("SELECT P.BusinessEntityID, P.FirstName, P.LastName, P.MiddleName, P.Suffix, PW.PasswordHash, PW.PasswordSalt FROM Person.Person P INNER JOIN Person.Password PW ON P.BusinessEntityID=PW.BusinessEntityID WHERE P.FirstName=@FirstName AND P.LastName=@LastName", conn);
 
             command.Parameters.Add("@FirstName", SqlDbType.NVarChar);
             command.Parameters.Add("@LastName", SqlDbType.NVarChar);
@@ -53,7 +54,7 @@ namespace SqlLogin
             }
             else
             {
-                // 如果有收到值
+                // 如果有收到值：判斷密碼是否正確
                 dataReader.Read();
 
                 source = Encoding.Default.GetBytes(textBox3.Text);  // 把 "輸入密碼" 轉成二進制

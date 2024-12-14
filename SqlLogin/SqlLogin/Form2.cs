@@ -51,5 +51,11 @@ namespace SqlLogin
             textBox3.Text = dataReader["ProductNumber"].ToString();
             textBox4.Text = dataReader["ListPrice"].ToString();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form3 fm3 = new Form3();
+            fm3.Show();
+        }
     }
 }
