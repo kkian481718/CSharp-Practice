@@ -100,12 +100,13 @@
             // 
             // btnSetEmployee
             // 
+            this.btnSetEmployee.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSetEmployee.Location = new System.Drawing.Point(370, 515);
             this.btnSetEmployee.Name = "btnSetEmployee";
             this.btnSetEmployee.Size = new System.Drawing.Size(153, 52);
             this.btnSetEmployee.TabIndex = 5;
             this.btnSetEmployee.Text = "設為員工";
-            this.btnSetEmployee.UseVisualStyleBackColor = true;
+            this.btnSetEmployee.UseVisualStyleBackColor = false;
             this.btnSetEmployee.Click += new System.EventHandler(this.btnSetEmployee_Click);
             // 
             // label1
@@ -132,6 +133,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(661, 603);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
